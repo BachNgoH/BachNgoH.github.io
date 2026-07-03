@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AIBL project page for count-preserving generation in dense and occluded layouts.">
+    <title>AIBL | Learning to Generate Multiple Objects from Dense and Occluded Layouts</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #10202c;
+        --muted: #5c6876;
+        --line: #d9e2ea;
+        --paper: #f7f9fb;
+        --white: #ffffff;
+        --teal: #0f766e;
+        --gold: #b7791f;
+        --red: #b42318;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 82vh;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+        background: #162636;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(9, 19, 28, 0.9), rgba(9, 19, 28, 0.58) 48%, rgba(9, 19, 28, 0.14)),
+          url("assets/teaser.png") center / cover no-repeat;
+      }
+
+      .hero-inner {
+        position: relative;
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 104px 0 68px;
+      }
+
+      .eyebrow {
+        margin: 0 0 16px;
+        color: #99f6e4;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 900px;
+        color: var(--white);
+        font-size: clamp(2.3rem, 6vw, 5.4rem);
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .subtitle {
+        max-width: 760px;
+        margin: 22px 0 0;
+        color: #e7eef6;
+        font-size: clamp(1rem, 2vw, 1.25rem);
+      }
+
+      .authors {
+        max-width: 860px;
+        margin: 18px 0 0;
+        color: #cbd7e3;
+        font-size: 0.98rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 18px;
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        border-radius: 6px;
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 800;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(8px);
+      }
+
+      .button.primary {
+        border-color: #2dd4bf;
+        background: #0f766e;
+      }
+
+      .button.disabled {
+        cursor: default;
+        color: #d7dde5;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      main {
+        background: var(--paper);
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .wrap {
+        width: min(1080px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .section-title {
+        margin: 0 0 16px;
+        font-size: clamp(1.65rem, 3vw, 2.6rem);
+        line-height: 1.12;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 850px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 32px;
+      }
+
+      .resource {
+        min-height: 150px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      .resource h3 {
+        margin: 0 0 10px;
+        font-size: 1rem;
+      }
+
+      .resource p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        margin-bottom: 16px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: #fff7ed;
+        color: #9a3412;
+        font-size: 0.8rem;
+        font-weight: 800;
+      }
+
+      .figure-band {
+        background: var(--white);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      figure {
+        margin: 34px 0 0;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      figcaption {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .facts {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 30px;
+      }
+
+      .fact {
+        padding: 18px 0;
+        border-top: 2px solid var(--line);
+      }
+
+      .fact strong {
+        display: block;
+        color: var(--teal);
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+
+      .fact span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+      }
+
+      footer {
+        padding: 34px 0 46px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 760px) {
+        .hero {
+          min-height: 78vh;
+        }
+
+        .hero-inner {
+          width: min(100% - 28px, 680px);
+          padding-bottom: 46px;
+        }
+
+        .wrap {
+          width: min(100% - 28px, 680px);
+        }
+
+        section {
+          padding: 52px 0;
+        }
+
+        .grid,
+        .facts {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">AIBL Project Page</p>
+        <h1>Learning to Generate Multiple Objects from Dense and Occluded Layouts</h1>
+        <p class="subtitle">
+          A temporary project page for AIBL, a layout-aware diffusion training framework for count-preserving
+          multi-object generation under dense overlap and occlusion.
+        </p>
+        <p class="authors">
+          Bach-Hoang Ngo, Tri-Si Ngo, Hieu Le, Trung-Nghia Le
+        </p>
+        <nav class="actions" aria-label="Project links">
+          <a class="button primary" href="#resources">Resources</a>
+          <span class="button disabled" aria-disabled="true">Source Code Coming Soon</span>
+          <span class="button disabled" aria-disabled="true">Dataset Coming Soon</span>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="wrap">
+          <h2 class="section-title">Count-Preserving Generation in Dense Scenes</h2>
+          <p class="lead">
+            Text-to-image diffusion models often merge nearby or occluded objects into visually plausible but
+            count-incorrect outputs. AIBL combines ownership-aware layout attention with an amodal-aware
+            instance-balanced loss to strengthen supervision for partially visible objects and reduce
+            cross-instance feature leakage.
+          </p>
+          <div class="facts" aria-label="Project highlights">
+            <div class="fact">
+              <strong>AIBL</strong>
+              <span>Amodal-Aware Instance-Balanced Loss for occluded instances.</span>
+            </div>
+            <div class="fact">
+              <strong>45K</strong>
+              <span>OverlapDepth benchmark scale for dense synthetic layouts.</span>
+            </div>
+            <div class="fact">
+              <strong>Layout</strong>
+              <span>Soft ownership-aware attention biases for overlapping boxes.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="figure-band">
+        <div class="wrap">
+          <h2 class="section-title">Method Overview</h2>
+          <p class="lead">
+            The project focuses on keeping individual object instances separable when prompts and layouts contain
+            many objects, heavy overlap, and large visible-area imbalance.
+          </p>
+          <figure>
+            <img src="assets/aibl_layout_attention_mechanism.png" alt="AIBL layout attention mechanism overview">
+            <figcaption>
+              Layout-aware attention encourages cohesive instance ownership while discouraging feature leakage
+              between overlapping objects.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="resources">
+        <div class="wrap">
+          <h2 class="section-title">Resources</h2>
+          <p class="lead">
+            This page is a temporary public landing page. Source code and dataset links are coming soon.
+          </p>
+          <div class="grid">
+            <div class="resource">
+              <span class="tag">Coming Soon</span>
+              <h3>Source Code</h3>
+              <p>Training, inference, and evaluation scripts will be linked here when the repository is ready.</p>
+            </div>
+            <div class="resource">
+              <span class="tag">Coming Soon</span>
+              <h3>Dataset</h3>
+              <p>OverlapDepth dataset access and documentation will be linked here when released.</p>
+            </div>
+            <div class="resource">
+              <span class="tag">Temporary</span>
+              <h3>Project Page</h3>
+              <p>The current public URL is <a href="https://bachngoh.github.io/AIBL/">bachngoh.github.io/AIBL</a>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <span>AIBL project page. Last updated July 2026.</span>
+      </div>
+    </footer>
+  </body>
+</html>

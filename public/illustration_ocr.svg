@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#f8fafc" fill-opacity="0.05"/>
+  
+  <!-- Stacked Scan Papers -->
+  <g transform="translate(100, 40)">
+    <!-- Bottom Layer -->
+    <rect x="0" y="20" width="160" height="200" rx="8" fill="#6d28d9" fill-opacity="0.2" />
+    
+    <!-- Middle Layer -->
+    <rect x="10" y="10" width="160" height="200" rx="8" fill="#6d28d9" fill-opacity="0.4" />
+    
+    <!-- Top Layer (The Paper) -->
+    <rect x="20" y="0" width="160" height="200" rx="8" fill="#e2e8f0" />
+    
+    <!-- Text Lines -->
+    <g transform="translate(20, 0)">
+      <rect x="20" y="30" width="120" height="10" rx="2" fill="#94a3b8" />
+      <rect x="20" y="50" width="120" height="10" rx="2" fill="#94a3b8" />
+      <rect x="20" y="70" width="80" height="10" rx="2" fill="#94a3b8" />
+      <rect x="20" y="110" width="120" height="10" rx="2" fill="#94a3b8" />
+      <rect x="20" y="130" width="100" height="10" rx="2" fill="#94a3b8" />
+      
+      <!-- Scan Beam Overlay -->
+      <rect x="-10" y="80" width="180" height="4" fill="url(#grad2)" opacity="0.8">
+        <animate attributeName="y" values="20;180;20" dur="3s" repeatCount="indefinite" />
+      </rect>
+      <rect x="-10" y="80" width="180" height="30" fill="url(#grad2)" opacity="0.15">
+        <animate attributeName="y" values="20;180;20" dur="3s" repeatCount="indefinite" />
+      </rect>
+    </g>
+  </g>
+</svg>

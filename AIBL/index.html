@@ -71,6 +71,28 @@
         font-size: 0.7em;
       }
 
+      .author-notes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        max-width: 900px;
+        margin: 4px auto 12px;
+        color: #6f7377;
+        font-size: clamp(0.82rem, 1.05vw, 0.92rem);
+        font-weight: 700;
+      }
+
+      .author-note {
+        display: inline-flex;
+        align-items: center;
+        min-height: 26px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: var(--soft);
+        white-space: nowrap;
+      }
+
       .affiliations {
         margin: 0 auto 14px;
         color: #555;
@@ -264,6 +286,11 @@
           gap: 8px;
         }
 
+        .author-notes {
+          gap: 6px;
+          margin-bottom: 10px;
+        }
+
         .button {
           min-height: 36px;
           padding: 0 10px;
@@ -294,6 +321,11 @@
           Si-Tri Ngo<sup>1,2,&dagger;</sup>&nbsp;&nbsp;
           Hieu Le<sup>3,&Dagger;</sup>&nbsp;&nbsp;
           Trung-Nghia Le<sup>1,2,&Dagger;,*</sup>
+        </p>
+        <p class="author-notes" aria-label="Author contribution notes">
+          <span class="author-note">&dagger; Equal contribution</span>
+          <span class="author-note">&Dagger; Equal advising</span>
+          <span class="author-note">* Corresponding author</span>
         </p>
         <p class="affiliations">
           <sup>1</sup>University of Science, Ho Chi Minh City&nbsp;&nbsp;
@@ -427,7 +459,7 @@
       </main>
 
       <footer>
-        <span>&dagger; Equal contribution. &Dagger; Equal advising. * Corresponding author. Last updated July 2026.</span>
+        <span>Last updated July 2026.</span>
       </footer>
     </div>
   </body>

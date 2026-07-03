@@ -9,366 +9,422 @@
     <style>
       :root {
         color-scheme: light;
-        --ink: #10202c;
-        --muted: #5c6876;
-        --line: #d9e2ea;
-        --paper: #f7f9fb;
-        --white: #ffffff;
-        --teal: #0f766e;
-        --gold: #b7791f;
-        --red: #b42318;
+        --ink: #202124;
+        --muted: #5f6368;
+        --blue: #1a73e8;
+        --line: #e5e7eb;
+        --soft: #f7f8fa;
+        --button: #f1f3f4;
       }
 
       * {
         box-sizing: border-box;
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
-
       body {
         margin: 0;
-        background: var(--paper);
+        background: #fff;
         color: var(--ink);
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         line-height: 1.55;
       }
 
       a {
-        color: inherit;
+        color: var(--blue);
+        text-decoration: none;
       }
 
-      .hero {
-        position: relative;
-        min-height: 82vh;
-        display: flex;
-        align-items: flex-end;
-        overflow: hidden;
-        background: #162636;
+      a:hover {
+        text-decoration: underline;
       }
 
-      .hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(90deg, rgba(9, 19, 28, 0.9), rgba(9, 19, 28, 0.58) 48%, rgba(9, 19, 28, 0.14)),
-          url("assets/teaser.png") center / cover no-repeat;
-      }
-
-      .hero-inner {
-        position: relative;
-        width: min(1180px, calc(100% - 40px));
+      .page {
+        width: min(1120px, calc(100% - 40px));
         margin: 0 auto;
-        padding: 104px 0 68px;
       }
 
-      .eyebrow {
-        margin: 0 0 16px;
-        color: #99f6e4;
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0;
-        text-transform: uppercase;
+      header {
+        padding: 56px 0 30px;
+        text-align: center;
       }
 
       h1 {
-        margin: 0;
-        max-width: 900px;
-        color: var(--white);
-        font-size: clamp(2.3rem, 6vw, 5.4rem);
-        line-height: 1.02;
+        max-width: 980px;
+        margin: 0 auto 22px;
+        color: #2b2b2b;
+        font-size: clamp(2.15rem, 5vw, 4.1rem);
+        line-height: 1.12;
         letter-spacing: 0;
-      }
-
-      .subtitle {
-        max-width: 760px;
-        margin: 22px 0 0;
-        color: #e7eef6;
-        font-size: clamp(1rem, 2vw, 1.25rem);
+        font-weight: 800;
       }
 
       .authors {
-        max-width: 860px;
-        margin: 18px 0 0;
-        color: #cbd7e3;
-        font-size: 0.98rem;
+        max-width: 960px;
+        margin: 0 auto 8px;
+        color: var(--blue);
+        font-size: clamp(1.05rem, 2.1vw, 1.45rem);
+        line-height: 1.45;
       }
 
-      .actions {
+      .authors sup,
+      .affiliations sup {
+        font-size: 0.7em;
+      }
+
+      .affiliations {
+        margin: 0 auto 18px;
+        color: #555;
+        font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+      }
+
+      .venue {
+        margin: 18px 0 24px;
+        color: #4d4d4d;
+        font-size: clamp(1.45rem, 3vw, 2.1rem);
+        font-weight: 800;
+      }
+
+      .links {
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 32px;
+        justify-content: center;
+        gap: 10px;
+        margin: 0 auto;
       }
 
       .button {
         display: inline-flex;
         align-items: center;
-        min-height: 44px;
-        padding: 0 18px;
-        border: 1px solid rgba(255, 255, 255, 0.26);
-        border-radius: 6px;
-        color: var(--white);
-        text-decoration: none;
-        font-weight: 800;
-        background: rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(8px);
+        justify-content: center;
+        gap: 8px;
+        min-height: 42px;
+        padding: 0 16px;
+        border-radius: 7px;
+        background: var(--button);
+        color: #202124;
+        font-weight: 700;
+        white-space: nowrap;
       }
 
-      .button.primary {
-        border-color: #2dd4bf;
-        background: #0f766e;
+      .button:hover {
+        background: #e8eaed;
+        text-decoration: none;
       }
 
       .button.disabled {
+        color: #6f7377;
         cursor: default;
-        color: #d7dde5;
-        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .button.disabled:hover {
+        background: var(--button);
       }
 
       main {
-        background: var(--paper);
+        border-top: 1px solid var(--line);
       }
 
       section {
-        padding: 72px 0;
+        padding: 34px 0;
       }
 
-      .wrap {
-        width: min(1080px, calc(100% - 40px));
-        margin: 0 auto;
-      }
-
-      .section-title {
-        margin: 0 0 16px;
-        font-size: clamp(1.65rem, 3vw, 2.6rem);
-        line-height: 1.12;
+      h2 {
+        margin: 0 0 14px;
+        color: #303134;
+        font-size: clamp(1.45rem, 2.5vw, 2rem);
+        line-height: 1.2;
         letter-spacing: 0;
+        text-align: center;
       }
 
-      .lead {
-        max-width: 850px;
+      p {
         margin: 0;
-        color: var(--muted);
-        font-size: 1.08rem;
       }
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
-        margin-top: 32px;
-      }
-
-      .resource {
-        min-height: 150px;
-        padding: 22px;
-        border: 1px solid var(--line);
+      .tldr {
+        max-width: 940px;
+        margin: 10px auto 0;
+        padding: 22px 28px;
         border-radius: 8px;
-        background: var(--white);
-      }
-
-      .resource h3 {
-        margin: 0 0 10px;
-        font-size: 1rem;
-      }
-
-      .resource p {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      .tag {
-        display: inline-flex;
-        align-items: center;
-        min-height: 28px;
-        margin-bottom: 16px;
-        padding: 0 10px;
-        border-radius: 999px;
-        background: #fff7ed;
-        color: #9a3412;
-        font-size: 0.8rem;
-        font-weight: 800;
-      }
-
-      .figure-band {
-        background: var(--white);
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
+        background: var(--soft);
+        color: #333;
+        font-size: clamp(1rem, 1.7vw, 1.18rem);
+        font-weight: 700;
+        text-align: center;
       }
 
       figure {
-        margin: 34px 0 0;
+        margin: 0;
       }
 
-      img {
+      .figure-image {
         display: block;
         width: 100%;
         height: auto;
+        margin: 0 auto;
+      }
+
+      .teaser {
+        width: min(920px, 100%);
+      }
+
+      .paper-figure {
+        width: min(1040px, 100%);
+      }
+
+      .analysis-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        align-items: start;
+        width: min(980px, 100%);
+        margin: 0 auto;
+      }
+
+      .analysis-grid img {
         border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--white);
       }
 
       figcaption {
-        margin-top: 12px;
+        width: min(920px, 100%);
+        margin: 12px auto 0;
         color: var(--muted);
-        font-size: 0.94rem;
+        font-size: 0.96rem;
+        text-align: center;
       }
 
-      .facts {
+      .content {
+        width: min(920px, 100%);
+        margin: 0 auto;
+        color: #333;
+        font-size: 1.05rem;
+      }
+
+      .content p + p {
+        margin-top: 12px;
+      }
+
+      pre {
+        overflow-x: auto;
+        margin: 0;
+        padding: 18px;
+        border-radius: 8px;
+        background: var(--soft);
+        color: #202124;
+        font-size: 0.94rem;
+        line-height: 1.45;
+      }
+
+      .status {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-        margin-top: 30px;
+        gap: 12px;
+        margin-top: 22px;
       }
 
-      .fact {
-        padding: 18px 0;
-        border-top: 2px solid var(--line);
+      .status-item {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
       }
 
-      .fact strong {
-        display: block;
-        color: var(--teal);
-        font-size: 1.5rem;
-        line-height: 1;
+      .status-item h3 {
+        margin: 0 0 6px;
+        font-size: 1.05rem;
       }
 
-      .fact span {
-        display: block;
-        margin-top: 8px;
+      .status-item p {
         color: var(--muted);
+        font-size: 0.96rem;
       }
 
       footer {
-        padding: 34px 0 46px;
+        border-top: 1px solid var(--line);
+        padding: 24px 0 40px;
         color: var(--muted);
         font-size: 0.92rem;
+        text-align: center;
       }
 
       @media (max-width: 760px) {
-        .hero {
-          min-height: 78vh;
-        }
-
-        .hero-inner {
-          width: min(100% - 28px, 680px);
-          padding-bottom: 46px;
-        }
-
-        .wrap {
+        .page {
           width: min(100% - 28px, 680px);
         }
 
-        section {
-          padding: 52px 0;
+        header {
+          padding-top: 34px;
         }
 
-        .grid,
-        .facts {
+        .links {
+          gap: 8px;
+        }
+
+        .button {
+          min-height: 40px;
+          padding: 0 12px;
+          font-size: 0.92rem;
+        }
+
+        .tldr {
+          padding: 18px;
+          text-align: left;
+        }
+
+        .status {
+          grid-template-columns: 1fr;
+        }
+
+        .analysis-grid {
           grid-template-columns: 1fr;
         }
       }
     </style>
   </head>
   <body>
-    <header class="hero">
-      <div class="hero-inner">
-        <p class="eyebrow">AIBL Project Page</p>
+    <div class="page">
+      <header>
         <h1>Learning to Generate Multiple Objects from Dense and Occluded Layouts</h1>
-        <p class="subtitle">
-          A temporary project page for AIBL, a layout-aware diffusion training framework for count-preserving
-          multi-object generation under dense overlap and occlusion.
-        </p>
         <p class="authors">
-          Bach-Hoang Ngo, Tri-Si Ngo, Hieu Le, Trung-Nghia Le
+          Bach-Hoang Ngo<sup>1,2,*</sup>&nbsp;&nbsp;
+          Tri-Si Ngo<sup>1,2,*</sup>&nbsp;&nbsp;
+          Hieu Le<sup>3</sup>&nbsp;&nbsp;
+          Trung-Nghia Le<sup>1,2</sup>
         </p>
-        <nav class="actions" aria-label="Project links">
-          <a class="button primary" href="#resources">Resources</a>
-          <span class="button disabled" aria-disabled="true">Source Code Coming Soon</span>
+        <p class="affiliations">
+          <sup>1</sup>University of Science, Ho Chi Minh City&nbsp;&nbsp;
+          <sup>2</sup>Vietnam National University, Ho Chi Minh City&nbsp;&nbsp;
+          <sup>3</sup>UNC Charlotte
+        </p>
+        <div class="venue">Project Page</div>
+        <nav class="links" aria-label="Project links">
+          <span class="button disabled" aria-disabled="true">Paper Coming Soon</span>
+          <span class="button disabled" aria-disabled="true">Code Coming Soon</span>
           <span class="button disabled" aria-disabled="true">Dataset Coming Soon</span>
+          <a class="button" href="#bibtex">BibTeX</a>
         </nav>
-      </div>
-    </header>
+      </header>
 
-    <main>
-      <section>
-        <div class="wrap">
-          <h2 class="section-title">Count-Preserving Generation in Dense Scenes</h2>
-          <p class="lead">
-            Text-to-image diffusion models often merge nearby or occluded objects into visually plausible but
-            count-incorrect outputs. AIBL combines ownership-aware layout attention with an amodal-aware
-            instance-balanced loss to strengthen supervision for partially visible objects and reduce
-            cross-instance feature leakage.
-          </p>
-          <div class="facts" aria-label="Project highlights">
-            <div class="fact">
-              <strong>AIBL</strong>
-              <span>Amodal-Aware Instance-Balanced Loss for occluded instances.</span>
-            </div>
-            <div class="fact">
-              <strong>45K</strong>
-              <span>OverlapDepth benchmark scale for dense synthetic layouts.</span>
-            </div>
-            <div class="fact">
-              <strong>Layout</strong>
-              <span>Soft ownership-aware attention biases for overlapping boxes.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="figure-band">
-        <div class="wrap">
-          <h2 class="section-title">Method Overview</h2>
-          <p class="lead">
-            The project focuses on keeping individual object instances separable when prompts and layouts contain
-            many objects, heavy overlap, and large visible-area imbalance.
-          </p>
+      <main>
+        <section aria-label="Teaser">
           <figure>
-            <img src="assets/aibl_layout_attention_mechanism.png" alt="AIBL layout attention mechanism overview">
+            <img class="figure-image teaser" src="assets/teaser2.png" alt="Count-preserving multi-category compositional generation results">
             <figcaption>
-              Layout-aware attention encourages cohesive instance ownership while discouraging feature leakage
-              between overlapping objects.
+              Count-preserving multi-category compositional generation. Standard diffusion models fail as scene
+              complexity grows, while our approach maintains more accurate counts under dense layouts and occlusion.
             </figcaption>
           </figure>
-        </div>
-      </section>
+        </section>
 
-      <section id="resources">
-        <div class="wrap">
-          <h2 class="section-title">Resources</h2>
-          <p class="lead">
-            This page is a temporary public landing page. Source code and dataset links are coming soon.
+        <section aria-label="Summary">
+          <p class="tldr">
+            <strong>TL;DR:</strong> AIBL improves multi-object generation by combining ownership-aware layout attention
+            with an amodal-aware instance-balanced loss for occluded objects.
           </p>
-          <div class="grid">
-            <div class="resource">
-              <span class="tag">Coming Soon</span>
-              <h3>Source Code</h3>
-              <p>Training, inference, and evaluation scripts will be linked here when the repository is ready.</p>
-            </div>
-            <div class="resource">
-              <span class="tag">Coming Soon</span>
-              <h3>Dataset</h3>
-              <p>OverlapDepth dataset access and documentation will be linked here when released.</p>
-            </div>
-            <div class="resource">
-              <span class="tag">Temporary</span>
-              <h3>Project Page</h3>
-              <p>The current public URL is <a href="https://bachngoh.github.io/AIBL/">bachngoh.github.io/AIBL</a>.</p>
+        </section>
+
+        <section>
+          <h2>Abstract</h2>
+          <div class="content">
+            <p>
+              Text-to-image diffusion models often fail to produce the requested number of objects in dense scenes.
+              Overlapping instances can collapse into merged structures, and heavily occluded objects receive weak
+              training signal because only small visible regions contribute to the loss.
+            </p>
+            <p>
+              We introduce AIBL, a layout-aware training framework that encourages instance ownership throughout
+              generation. Ownership-aware attention biases reduce cross-instance feature leakage, while an
+              amodal-aware instance-balanced loss increases supervision for occluded objects according to their
+              amodal-to-visible area ratio.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Method Overview</h2>
+          <figure>
+            <img class="figure-image paper-figure" src="assets/diagram-3.png" alt="AIBL architecture overview">
+            <figcaption>
+              Architecture overview. Layout Attention steers generation with region identity maps, while the AIBL
+              training objective prioritizes heavily occluded instances using amodal and visible masks.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h2>Qualitative Results</h2>
+          <figure>
+            <img class="figure-image paper-figure" src="assets/qualitative-5-figures-compact.png" alt="Qualitative comparison on counting prompts">
+            <figcaption>
+              Qualitative comparison on counting prompts. AIBL promotes clearer instance separation compared with
+              layout-only generation and contemporary text-to-image baselines.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h2>Analysis</h2>
+          <div class="analysis-grid">
+            <figure>
+              <img class="figure-image" src="assets/counting-score.png" alt="Counting score stratified by target object density">
+              <figcaption>Counting score stratified by target object density.</figcaption>
+            </figure>
+            <figure>
+              <img class="figure-image" src="assets/gamma-ablation.png" alt="Gamma ablation for AIBL">
+              <figcaption>Sensitivity of AIBL to the dampening exponent.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section>
+          <h2>Failure Cases</h2>
+          <figure>
+            <img class="figure-image paper-figure" src="assets/failure-case.png" alt="AIBL failure cases">
+            <figcaption>
+              Failure cases. The method can still struggle with extreme density or thin objects.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section id="resources">
+          <h2>Resources</h2>
+          <div class="content">
+            <p>
+              This is a temporary public project page. Source code and dataset links are coming soon.
+            </p>
+            <div class="status">
+              <div class="status-item">
+                <h3>Source Code</h3>
+                <p>Training, inference, and evaluation scripts will be linked here when ready.</p>
+              </div>
+              <div class="status-item">
+                <h3>Dataset</h3>
+                <p>OverlapDepth access and documentation will be linked here when released.</p>
+              </div>
+              <div class="status-item">
+                <h3>Project URL</h3>
+                <p><a href="https://bachngoh.github.io/AIBL/">bachngoh.github.io/AIBL</a></p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
 
-    <footer>
-      <div class="wrap">
-        <span>AIBL project page. Last updated July 2026.</span>
-      </div>
-    </footer>
+        <section id="bibtex">
+          <h2>BibTeX</h2>
+          <div class="content">
+<pre><code>@misc{ngo2026aibl,
+  title  = {Learning to Generate Multiple Objects from Dense and Occluded Layouts},
+  author = {Ngo, Bach-Hoang and Ngo, Tri-Si and Le, Hieu and Le, Trung-Nghia},
+  year   = {2026},
+  note   = {Project page. Paper, code, and dataset coming soon}
+}</code></pre>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>* Equal contribution. Last updated July 2026.</span>
+      </footer>
+    </div>
   </body>
 </html>

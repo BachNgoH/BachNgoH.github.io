@@ -223,173 +223,90 @@
 
         /* --- HERO SECTION --- */
         #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 120px 0 80px;
+            padding: 140px 0 80px;
         }
 
-        canvas#hero-canvas {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 880px;
-            padding: 0 32px;
-            text-align: center;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-wrap: wrap;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 220px 1fr;
             gap: 56px;
-            margin: 32px auto 28px;
-            max-width: 760px;
+            align-items: start;
         }
 
-        .hero-stats .stat {
-            text-align: center;
+        .hero-photo img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
         }
 
-        .hero-stats dt {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
+        .hero-info h1 {
+            font-family: var(--font-body);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
             color: var(--fg-dim);
-            margin-bottom: 6px;
+            margin-bottom: 24px;
         }
 
-        .hero-stats dd {
-            font-size: 0.95rem;
+        .hero-bio {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: var(--fg-dim);
+            margin-bottom: 16px;
+            max-width: 680px;
+        }
+
+        .hero-bio a {
             color: var(--fg-color);
-            line-height: 1.3;
-        }
-
-        .hero-stats dd a {
             border-bottom: 1px solid var(--fg-faint);
             transition: border-color 0.3s ease;
         }
 
-        .hero-stats dd a:hover {
+        .hero-bio a:hover {
             border-color: var(--fg-color);
         }
 
-        .stat-sub {
-            display: block;
-            font-size: 0.78rem;
+        .hero-links {
+            margin-top: 24px;
+            font-size: 1rem;
             color: var(--fg-dim);
-            margin-top: 2px;
+        }
+
+        .hero-links a {
+            color: var(--fg-color);
+            border-bottom: 1px solid var(--fg-faint);
+            transition: border-color 0.3s ease;
+            margin: 0 2px;
+        }
+
+        .hero-links a:hover {
+            border-color: var(--fg-color);
         }
 
         @media (max-width: 768px) {
-            .hero-stats {
-                gap: 24px;
-            }
-        }
-        }
-
-        .hero-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 24px;
-            opacity: 0.8;
-            display: inline-flex;
-            align-items: center;
-            border: 1px solid var(--fg-faint);
-            padding: 8px 16px;
-            border-radius: 50px;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-        }
-
-        .hero-label::after {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: var(--fg-color);
-            /* White accent */
-            margin-left: 10px;
-            border-radius: 50%;
-            animation: blink 1s infinite;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                text-align: center;
             }
 
-            50% {
-                opacity: 0;
+            .hero-photo {
+                max-width: 180px;
+                margin: 0 auto;
             }
-        }
 
-        h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5.2vw, 4.2rem);
-            font-weight: 700;
-            line-height: 1;
-            letter-spacing: -0.03em;
-            margin-bottom: 28px;
-            position: relative;
-        }
-
-        h1 span {
-            display: block;
-            position: relative;
-            color: var(--fg-color);
-            transition: all 0.3s ease;
-        }
-
-        /* Match the rest of the name */
-        h1 .last-name {
-            color: var(--fg-color);
-        }
-
-        .hero-desc {
-            max-width: 620px;
-            font-size: 1.1rem;
-            line-height: 1.55;
-            color: var(--fg-dim);
-            margin: 0 auto 32px;
-            text-align: center;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 240px 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        .about-photo {
-            position: sticky;
-            top: 120px;
-        }
-
-        .about-photo img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.04);
+            .hero-info h1 {
+                font-size: 2rem;
+            }
         }
 
         .about-text {
@@ -419,18 +336,6 @@
             margin-top: -32px;
             margin-bottom: 40px;
             letter-spacing: 0.04em;
-        }
-
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .about-photo {
-                position: static;
-                max-width: 200px;
-            }
         }
 
         .social-links {
@@ -1035,35 +940,16 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 3.5rem;
-            }
-
             .timeline-item {
                 grid-template-columns: 1fr;
                 gap: 16px;
-            }
-
-            .project-card.featured,
-            .project-card.standard {
-                grid-column: span 12;
             }
 
             .nav-links {
                 display: none;
             }
 
-            /* Center hero text on mobile */
-            .hero-content {
-                text-align: center;
-            }
-
-            .hero-desc {
-                margin: 0 auto 36px;
-                text-align: center;
-            }
-
-            .social-links {
+            .contact-simple .social-links {
                 justify-content: center;
             }
         }
@@ -1094,58 +980,38 @@
 
     <!-- Hero Section -->
     <section id="hero">
-        <canvas id="hero-canvas"></canvas>
-        <div class="hero-content fade-in" id="hero-content">
-            <div class="hero-label">PhD Student, Computer Science</div>
-            <h1>
-                Ngo Hoang<br>
-                <span class="last-name">Bach</span>
-            </h1>
-            <p class="hero-desc">
-                Incoming PhD student at UNC Charlotte starting Spring 2027, joining <a
-                    href="https://hieulem.github.io/" target="_blank" rel="noopener">Prof. Hieu Le</a> to work
-                on trustworthy computer vision.
-            </p>
-
-            <div class="hero-stats">
-                <div class="stat">
-                    <dt>Based in</dt>
-                    <dd>Ho Chi Minh City</dd>
+        <div class="container">
+            <div class="hero-grid fade-in">
+                <div class="hero-photo">
+                    <img src="https://picsum.photos/seed/bachngoh/600/600" alt="Ngo Hoang Bach" loading="lazy">
+                    <!-- TODO: replace with public/profile.jpg -->
                 </div>
-                <div class="stat">
-                    <dt>Starting</dt>
-                    <dd>PhD, UNC Charlotte <span class="stat-sub">Spring 2027</span></dd>
+                <div class="hero-info">
+                    <h1>Ngo Hoang Bach</h1>
+                    <p class="hero-subtitle">
+                        PhD Student, Computer Science &middot; UNC Charlotte (Spring 2027)
+                    </p>
+                    <p class="hero-bio">
+                        I'm a computer-vision researcher focused on <strong>trustworthy computer vision</strong>.
+                        I'm an incoming PhD student at <a href="https://charlotte.edu/" target="_blank"
+                            rel="noopener">UNC Charlotte</a>, working with <a
+                            href="https://hieulem.github.io/" target="_blank" rel="noopener">Prof. Hieu
+                            Le</a> on calibration, interpretability, and robustness to distribution shift.
+                    </p>
+                    <p class="hero-bio">
+                        Previously, I have published first-author papers on dense layout generation,
+                        pedestrian attribute recognition, and vehicle retrieval. I am currently based in
+                        Ho Chi Minh City, Vietnam.
+                    </p>
+                    <p class="hero-links">
+                        <a href="mailto:nlmbao2015@gmail.com">Email</a> /
+                        <a href="https://github.com/BachNgoH" target="_blank" rel="noopener">GitHub</a> /
+                        <a href="#" target="_blank" rel="noopener">Scholar</a> /
+                        <a href="https://www.linkedin.com/in/bach-hoang-ngo-575680304/" target="_blank"
+                            rel="noopener">LinkedIn</a> /
+                        <a href="#">CV</a>
+                    </p>
                 </div>
-                <div class="stat">
-                    <dt>Advisor</dt>
-                    <dd><a href="https://hieulem.github.io/" target="_blank" rel="noopener">Prof. Hieu Le</a></dd>
-                </div>
-                <div class="stat">
-                    <dt>Open to</dt>
-                    <dd>Research chats</dd>
-                </div>
-            </div>
-
-            <div class="social-links">
-                <a href="https://github.com/BachNgoH" target="_blank" aria-label="GitHub">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                    </svg>
-                </a>
-                <a href="mailto:nlmbao2015@gmail.com" aria-label="Email"><i data-lucide="mail"></i></a>
-                <a href="#" aria-label="Google Scholar"><i data-lucide="graduation-cap"></i></a>
-                <a href="https://www.linkedin.com/in/bach-hoang-ngo-575680304/" target="_blank" rel="noopener"
-                    aria-label="LinkedIn">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-                        <rect x="2" y="9" width="4" height="12" />
-                        <circle cx="4" cy="4" r="2" />
-                    </svg>
-                </a>
-                <a href="#" aria-label="Download CV" id="cv-button"><i data-lucide="file-text"></i></a>
             </div>
         </div>
     </section>
@@ -1158,30 +1024,22 @@
                 <span class="section-count">01</span>
             </div>
 
-            <div class="about-grid fade-in">
-                <div class="about-photo">
-                    <img src="https://picsum.photos/seed/bachngoh/600/600" alt="Ngo Hoang Bach"
-                        loading="lazy">
-                    <!-- TODO: replace with public/profile.jpg -->
-                </div>
-
-                <div class="about-text">
-                    <p>
-                        I'm a computer-vision researcher focused on building models that people can trust.
-                        My current interests include <strong>calibration, interpretability, and robustness to
-                            distribution shift</strong> — with the goal of making vision systems reliable enough
-                        to deploy in safety-critical settings.
-                    </p>
-                    <p>
-                        I am an incoming PhD student at <a href="https://charlotte.edu/" target="_blank"
-                            rel="noopener">UNC Charlotte</a> (Spring 2027), where I will be working with <a
-                            href="https://hieulem.github.io/" target="_blank" rel="noopener">Prof. Hieu
-                            Le</a>. Previously, I have published first-author papers on dense layout
-                        generation, pedestrian attribute recognition, and vehicle retrieval at venues
-                        including CVPR Workshops, ACCV, and arXiv. I am currently based in Ho Chi Minh City,
-                        Vietnam. If our research overlaps, I'd love to hear from you.
-                    </p>
-                </div>
+            <div class="about-text fade-in">
+                <p>
+                    I'm a computer-vision researcher focused on building models that people can trust.
+                    My current interests include <strong>calibration, interpretability, and robustness to
+                        distribution shift</strong> — with the goal of making vision systems reliable enough
+                    to deploy in safety-critical settings.
+                </p>
+                <p>
+                    I am an incoming PhD student at <a href="https://charlotte.edu/" target="_blank"
+                        rel="noopener">UNC Charlotte</a> (Spring 2027), where I will be working with <a
+                        href="https://hieulem.github.io/" target="_blank" rel="noopener">Prof. Hieu
+                        Le</a>. Previously, I have published first-author papers on dense layout
+                    generation, pedestrian attribute recognition, and vehicle retrieval at venues
+                    including CVPR Workshops, ACCV, and arXiv. I am currently based in Ho Chi Minh City,
+                    Vietnam. If our research overlaps, I'd love to hear from you.
+                </p>
             </div>
         </div>
     </section>
@@ -1408,117 +1266,6 @@
                 navbar.classList.remove('scrolled');
             }
         });
-
-        // --- 3D SPHERE CANVAS ANIMATION ---
-        const canvas = document.getElementById('hero-canvas');
-        const ctx = canvas.getContext('2d');
-
-        let width, height;
-        let particles = [];
-        let scrollSpeedMultiplier = 1;
-        let mouseInfluence = 0.3;
-        const GLOBE_RADIUS = 320;
-        const DOT_COUNT = 1400;
-        const DOT_SIZE = 1.8;
-
-        let mouse = { x: 0, y: 0 };
-        let targetRotation = { x: 0, y: 0 };
-        let currentRotation = { x: 0, y: 0 };
-
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = (e.clientY / window.innerHeight) * 2 - 1;
-        });
-
-        function resize() {
-            width = canvas.parentElement.clientWidth;
-            height = canvas.parentElement.clientHeight;
-            canvas.width = width;
-            canvas.height = height;
-            initParticles();
-        }
-
-        class Particle3D {
-            constructor() {
-                this.theta = Math.random() * Math.PI * 2;
-                this.phi = Math.acos((Math.random() * 2) - 1);
-                this.radius = GLOBE_RADIUS;
-                this.x = 0; this.y = 0; this.z = 0;
-            }
-
-            project(rotationX, rotationY) {
-                let x = this.radius * Math.sin(this.phi) * Math.cos(this.theta);
-                let y = this.radius * Math.sin(this.phi) * Math.sin(this.theta);
-                let z = this.radius * Math.cos(this.phi);
-
-                // Scroll/mouse driven Y rotation
-                let yRad = rotationY * 0.5;
-                let x1 = x * Math.cos(yRad) - z * Math.sin(yRad);
-                let z1 = x * Math.sin(yRad) + z * Math.cos(yRad);
-
-                // Mouse driven X rotation
-                let xRad = -rotationX * 0.5;
-                let y2 = y * Math.cos(xRad) - z1 * Math.sin(xRad);
-                let z2 = y * Math.sin(xRad) + z1 * Math.cos(xRad);
-
-                this.x = x1; this.y = y2; this.z = z2;
-
-                let perspective = 1000;
-                let scale = perspective / (perspective + this.z + 400);
-
-                // Center the globe
-                this.screenX = width * 0.5 + this.x * scale;
-                this.screenY = height * 0.5 + this.y * scale;
-                this.scale = scale;
-            }
-
-            draw() {
-                let alpha = (this.z + GLOBE_RADIUS) / (2 * GLOBE_RADIUS);
-                alpha = 0.08 + (alpha * 0.65);
-
-                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-                const r = isLight ? 26 : 230;
-                const g = isLight ? 26 : 230;
-                const b = isLight ? 26 : 230;
-
-                ctx.beginPath();
-                ctx.arc(this.screenX, this.screenY, DOT_SIZE * this.scale, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < DOT_COUNT; i++) {
-                particles.push(new Particle3D());
-            }
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, width, height);
-
-            targetRotation.x = mouse.y * mouseInfluence;
-            targetRotation.y = mouse.x * mouseInfluence;
-
-            const autoSpeed = 0.0002 * scrollSpeedMultiplier;
-            const time = Date.now() * autoSpeed;
-
-            currentRotation.x += (targetRotation.x - currentRotation.x) * 0.05;
-            currentRotation.y += (targetRotation.y - currentRotation.y) * 0.05;
-
-            let finalRotY = currentRotation.y + time;
-
-            particles.forEach(p => {
-                p.project(currentRotation.x, finalRotY);
-                p.draw();
-            });
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-        animate();
 
         // --- THEME TOGGLE WITH CIRCULAR TRANSITION ---
         const themeToggle = document.getElementById('theme-toggle');

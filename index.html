@@ -755,6 +755,73 @@
             color: var(--fg-dim);
         }
 
+        /* --- NEWS --- */
+        .news-list {
+            max-width: 820px;
+        }
+
+        .news-item {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 32px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            align-items: baseline;
+        }
+
+        .news-date {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--fg-dim);
+            white-space: nowrap;
+        }
+
+        .news-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--fg-color);
+        }
+
+        .news-text em {
+            font-style: italic;
+            color: var(--fg-color);
+        }
+
+        .news-text a {
+            color: var(--fg-color);
+            border-bottom: 1px solid var(--fg-faint);
+            transition: border-color 0.3s ease;
+        }
+
+        .news-text a:hover {
+            border-color: var(--fg-color);
+        }
+
+        .news-link {
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 0.85rem;
+            color: var(--fg-dim);
+            border-bottom: 1px solid transparent;
+        }
+
+        .news-link:hover {
+            border-bottom-color: var(--fg-dim);
+        }
+
+        @media (max-width: 768px) {
+            .news-item {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .news-date {
+                font-size: 0.85rem;
+            }
+        }
+
         /* --- CONTACT SECTION --- */
         .contact-container {
             display: grid;
@@ -908,6 +975,42 @@
             }
         }
 
+        /* --- CONTACT (SIMPLE) --- */
+        .contact-simple {
+            max-width: 720px;
+            margin-top: 24px;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+            line-height: 1.65;
+            color: var(--fg-dim);
+            margin-bottom: 32px;
+        }
+
+        .contact-email {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            margin-bottom: 40px;
+            letter-spacing: -0.01em;
+            word-break: break-all;
+        }
+
+        .contact-email a {
+            border-bottom: 1px solid var(--fg-faint);
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-email a:hover {
+            border-color: var(--fg-color);
+        }
+
+        .contact-simple .social-links {
+            justify-content: flex-start;
+            gap: 16px;
+        }
+
         /* --- FOOTER --- */
         footer {
             padding: 80px 0 40px;
@@ -975,9 +1078,10 @@
             <div class="logo">BACH.</div>
             <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#research">Research</a>
-                <a href="#experience">Experience</a>
-                <a href="mailto:nlmbao2015@gmail.com">Contact</a>
+                <a href="#news">News</a>
+                <a href="#research">Publications</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
     </nav>
@@ -1041,6 +1145,7 @@
                         <circle cx="4" cy="4" r="2" />
                     </svg>
                 </a>
+                <a href="#" aria-label="Download CV" id="cv-button"><i data-lucide="file-text"></i></a>
             </div>
         </div>
     </section>
@@ -1062,19 +1167,67 @@
 
                 <div class="about-text">
                     <p>
-                        I'm an AI researcher and engineer based in Ho Chi Minh City. By day I shipped production AI
-                        at Finizi.AI and EDBase. Outside of work, I've published first-author papers on vehicle
-                        retrieval, pedestrian attributes, and dense layout generation.
+                        I'm a computer-vision researcher focused on building models that people can trust.
+                        My current interests include <strong>calibration, interpretability, and robustness to
+                            distribution shift</strong> — with the goal of making vision systems reliable enough
+                        to deploy in safety-critical settings.
                     </p>
                     <p>
-                        Starting Spring 2027 I'll join UNC Charlotte as a PhD student, working with <a
-                            href="https://hieulem.github.io/" target="_blank" rel="noopener">Prof. Hieu Le</a> on
-                        trustworthy computer vision. I want to build models people can trust: calibrated,
-                        interpretable, and robust to distribution shift. If this overlaps with your work, let's
-                        talk.
+                        I am an incoming PhD student at <a href="https://charlotte.edu/" target="_blank"
+                            rel="noopener">UNC Charlotte</a> (Spring 2027), where I will be working with <a
+                            href="https://hieulem.github.io/" target="_blank" rel="noopener">Prof. Hieu
+                            Le</a>. Previously, I have published first-author papers on dense layout
+                        generation, pedestrian attribute recognition, and vehicle retrieval at venues
+                        including CVPR Workshops, ACCV, and arXiv. I am currently based in Ho Chi Minh City,
+                        Vietnam. If our research overlaps, I'd love to hear from you.
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="section-padding">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>News</h2>
+                <span class="section-count">02</span>
+            </div>
+            <p class="section-subtitle fade-in">Recent updates</p>
+
+            <ul class="news-list">
+                <li class="news-item fade-in">
+                    <span class="news-date">Sep 2026</span>
+                    <span class="news-text">AIBL — <em>Learning to Generate Multiple Objects from Dense and
+                            Occluded Layouts</em> — released as a preprint on <a
+                            href="https://arxiv.org/abs/2607.03488" target="_blank" rel="noopener">arXiv</a>.
+                        <a href="/AIBL/" class="news-link">Project page</a>
+                    </span>
+                </li>
+                <li class="news-item fade-in">
+                    <span class="news-date">Aug 2026</span>
+                    <span class="news-text">Admitted to the <strong>PhD program in Computer Science at UNC
+                            Charlotte</strong> (Spring 2027). Will be working with <a
+                            href="https://hieulem.github.io/" target="_blank" rel="noopener">Prof. Hieu
+                            Le</a> on trustworthy computer vision.
+                    </span>
+                </li>
+                <li class="news-item fade-in">
+                    <span class="news-date">Dec 2024</span>
+                    <span class="news-text"><em>CrossPAR: Enhancing Pedestrian Attribute Recognition</em>
+                        presented at ACCV 2024.</span>
+                </li>
+                <li class="news-item fade-in">
+                    <span class="news-date">Jun 2024</span>
+                    <span class="news-text"><em>Divide and Conquer Boosting for Traffic Safety Analysis</em>
+                        presented at the CVPR Workshop (VLM4Safety).</span>
+                </li>
+                <li class="news-item fade-in">
+                    <span class="news-date">Jun 2023</span>
+                    <span class="news-text"><em>Comprehensive Visual Features for Vehicle Retrieval</em>
+                        presented at the CVPR AI City Challenge Workshop.</span>
+                </li>
+            </ul>
         </div>
     </section>
 
@@ -1082,10 +1235,10 @@
     <section id="research" class="section-padding">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Research</h2>
-                <span class="section-count">02</span>
+                <h2>Publications</h2>
+                <span class="section-count">03</span>
             </div>
-            <p class="section-subtitle fade-in">Selected publications</p>
+            <p class="section-subtitle fade-in">Selected publications, reverse chronological</p>
 
             <div class="research-list">
                 <a class="pub-item fade-in" href="/AIBL/">
@@ -1120,37 +1273,37 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section-padding">
+    <!-- Education Section -->
+    <section id="education" class="section-padding">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Experience</h2>
-                <span class="section-count">03</span>
+                <h2>Education</h2>
+                <span class="section-count">04</span>
             </div>
 
             <div class="timeline">
                 <div class="timeline-item fade-in">
-                    <div class="timeline-date">Present</div>
+                    <div class="timeline-date">2027 —</div>
                     <div class="timeline-content">
-                        <h3>Founding Engineer</h3>
-                        <span class="company">Finizi.AI</span>
+                        <h3>PhD, Computer Science</h3>
+                        <span class="company">UNC Charlotte</span>
                         <ul class="timeline-desc">
-                            <li>Designed an automated accounting system processing 10k+ invoices daily.</li>
-                            <li>Built cloud-native infrastructure for generating business insights and operations.</li>
-                            <li>Implemented AI-driven tax compliance and bookkeeping automation.</li>
+                            <li>Incoming Spring 2027. Advisor: <a href="https://hieulem.github.io/"
+                                    target="_blank" rel="noopener">Prof. Hieu Le</a>.</li>
+                            <li>Research focus: trustworthy computer vision — calibration, interpretability,
+                                and robustness to distribution shift.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="timeline-item fade-in">
-                    <div class="timeline-date">2024</div>
+                    <div class="timeline-date">Prior</div>
                     <div class="timeline-content">
-                        <h3>Junior AI Engineer</h3>
-                        <span class="company">Viact.ai</span>
+                        <h3>B.S. / M.S., Computer Science</h3>
+                        <span class="company">University of Science, VNU-HCM</span>
                         <ul class="timeline-desc">
-                            <li>Developed AI tools for market signal detection from social media and news.</li>
-                            <li>Designed OCR pipelines for complex form extraction.</li>
-                            <li>Rapid deployment of GenAI tools using vLLM, Celery, and MCP.</li>
+                            <li>Concentration in computer vision and machine learning.</li>
+                            <li>First-author publications at CVPR Workshops, ACCV, and arXiv.</li>
                         </ul>
                     </div>
                 </div>
@@ -1158,11 +1311,12 @@
                 <div class="timeline-item fade-in">
                     <div class="timeline-date">2023</div>
                     <div class="timeline-content">
-                        <h3>Head of AI Team</h3>
-                        <span class="company">GDGoC - HCMUS</span>
+                        <h3>Research & Mentorship Lead</h3>
+                        <span class="company">GDGoC — HCMUS</span>
                         <ul class="timeline-desc">
-                            <li>Directed research projects and organized academic workshops.</li>
-                            <li>Mentored students on modern AI topics and led the technical team.</li>
+                            <li>Directed student-led research projects in computer vision and ML.</li>
+                            <li>Organized reading groups, workshops, and mentored junior researchers on
+                                their first papers.</li>
                         </ul>
                     </div>
                 </div>
@@ -1175,50 +1329,38 @@
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Contact</h2>
-                <span class="section-count">04</span>
+                <span class="section-count">05</span>
             </div>
 
-            <div class="contact-container fade-in">
-                <!-- Left: Form -->
-                <div class="contact-form">
-                    <h3 class="contact-header">Contact <span>Me</span></h3>
-
-                    <form action="#" method="POST" onsubmit="event.preventDefault();">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Name</label>
-                                <input type="text" class="form-input" placeholder="Your name">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-input" placeholder="Your email">
-                            </div>
-                        </div>
-
-                        <div class="form-group" style="margin-top: 24px;">
-                            <label class="form-label">Subject</label>
-                            <input type="text" class="form-input" placeholder="Project inquiry or Job opportunity">
-                        </div>
-
-                        <div class="form-group" style="margin-top: 24px;">
-                            <label class="form-label">Message</label>
-                            <textarea class="form-textarea"
-                                placeholder="Tell me about your project or the role..."></textarea>
-                        </div>
-
-                        <button type="submit" class="submit-btn" style="margin-top: 24px; width: 100%;">Send
-                            Message</button>
-                    </form>
-                </div>
-
-                <!-- Right: Decorative Card -->
-                <div class="contact-card">
-                    <div>
-                        <h3>Let's build<br>something<br>amazing.</h3>
-                        <p>Open for Founding Engineer roles and technical leadership opportunities. Let's discuss how I
-                            can bring value to your team.</p>
-                    </div>
-                    <div class="globe-decoration"></div>
+            <div class="contact-simple fade-in">
+                <p class="contact-text">
+                    The best way to reach me is by email. I am happy to discuss research
+                    collaborations, paper reviews, mentoring, or anything related to trustworthy
+                    computer vision.
+                </p>
+                <p class="contact-email">
+                    <a href="mailto:nlmbao2015@gmail.com">nlmbao2015@gmail.com</a>
+                </p>
+                <div class="social-links">
+                    <a href="https://github.com/BachNgoH" target="_blank" aria-label="GitHub">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                        </svg>
+                    </a>
+                    <a href="mailto:nlmbao2015@gmail.com" aria-label="Email"><i data-lucide="mail"></i></a>
+                    <a href="#" aria-label="Google Scholar"><i data-lucide="graduation-cap"></i></a>
+                    <a href="https://www.linkedin.com/in/bach-hoang-ngo-575680304/" target="_blank"
+                        rel="noopener" aria-label="LinkedIn">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Download CV"><i data-lucide="file-text"></i></a>
                 </div>
             </div>
         </div>
@@ -1228,10 +1370,10 @@
     <footer>
         <div class="container">
             <div class="footer-cta fade-in">
-                <a href="mailto:nlmbao2015@gmail.com">Let's Collaborate</a>
+                <a href="mailto:nlmbao2015@gmail.com">Get in touch</a>
             </div>
             <p class="copyright">
-                © 2025 Ngo Hoang Bach.
+                © 2026 Ngo Hoang Bach.
             </p>
         </div>
     </footer>
